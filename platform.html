@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillBridge - Learn Marketable Skills</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-light: #6366f1;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f1f5f9;
+            color: var(--dark);
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+        
+        .logo i {
+            margin-right: 0.5rem;
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            object-fit: cover;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .welcome-banner {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-banner h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .welcome-banner p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 0.75rem;
+            color: var(--primary);
+        }
+        
+        .category-tabs {
+            display: flex;
+            overflow-x: auto;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            scrollbar-width: none;
+        }
+        
+        .category-tabs::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .category-tab {
+            padding: 0.75rem 1.5rem;
+            background-color: white;
+            border-radius: 2rem;
+            margin-right: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .category-tab.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .skill-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-card-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+        
+        .skill-card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .skill-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        
+        .skill-card .meta {
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+        
+        .skill-card .meta i {
+            margin-right: 0.3rem;
+        }
+        
+        .skill-card .meta span {
+            margin-right: 1rem;
+        }
+        
+        .skill-card .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .skill-detail-page {
+            display: none;
+        }
+        
+        .skill-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .skill-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .skill-header p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .back-btn {
+            background-color: white;
+            color: var(--dark);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .back-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .live-sessions {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .live-session-card {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background-color: #f8fafc;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .live-session-card:hover {
+            background-color: #f1f5f9;
+        }
+        
+        .live-session-card:last-child {
+            margin-bottom: 0;
+        }
+        
+        .session-time {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+            margin-right: 1.5rem;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .session-details {
+            flex-grow: 1;
+        }
+        
+        .session-details h4 {
+            margin-bottom: 0.25rem;
+        }
+        
+        .session-details p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .session-educator {
+            display: flex;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        
+        .session-educator img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            object-fit: cover;
+        }
+        
+        .session-educator span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .join-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .join-btn:hover {
+            background-color: #0d9f6e;
+        }
+        
+        .video-playlist {
+            margin-top: 2rem;
+        }
+        
+        .playlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .video-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-info {
+            padding: 1rem;
+        }
+        
+        .video-info h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .video-info p {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        
+        .search-bar {
+            display: flex;
+            margin-bottom: 2rem;
+        }
+        
+        .search-bar input {
+            flex-grow: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem 0 0 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .search-bar button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .search-bar button:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .no-live-sessions {
+            background-color: #f8fafc;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 0.5rem;
+            color: var(--gray);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-column ul li a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            nav ul {
+                margin: 1rem 0;
+            }
+            
+            nav ul li {
+                margin-left: 1rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .welcome-banner h1 {
+                font-size: 1.5rem;
+            }
+            
+            .welcome-banner p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .live-session-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .session-time {
+                margin-right: 0;
+                margin-bottom: 1rem;
+                width: 100%;
+            }
+            
+            .join-btn {
+                margin-top: 1rem;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo" id="home-link">
+            <i class="fas fa-hands-helping"></i>
+            <span>SkillBridge</span>
+        </a>
+        
+        <nav>
+            <ul>
+                <li><a href="#" id="nav-home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#" id="nav-courses"><i class="fas fa-graduation-cap"></i> Courses</a></li>
+                <li><a href="#" id="nav-jobs"><i class="fas fa-briefcase"></i> Jobs</a></li>
+                <li><a href="#" id="nav-community"><i class="fas fa-users"></i> Community</a></li>
+            </ul>
+        </nav>
+        
+        <div class="user-profile" id="user-profile">
+            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="User">
+            <span id="username-display">Guest</span>
+            <i class="fas fa-chevron-down" style="margin-left: 0.5rem; font-size: 0.8rem;"></i>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Main Landing Page -->
+        <div id="main-page">
+            <div class="welcome-banner">
+                <h1>Welcome back, <span id="welcome-username">Guest</span>!</h1>
+                <p>Continue your learning journey or explore new skills to boost your career opportunities.</p>
+                <a href="#" class="btn" id="continue-learning-btn">Continue Learning</a>
+                <a href="#" class="btn btn-outline" id="explore-skills-btn">Explore New Skills</a>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Search for skills, courses, or jobs..." id="search-input">
+                <button type="submit" id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="category-tabs">
+                <div class="category-tab active" data-category="all">All Skills</div>
+                <div class="category-tab" data-category="food">Food & Cooking</div>
+                <div class="category-tab" data-category="digital">Digital Work</div>
+                <div class="category-tab" data-category="agri">Agriculture</div>
+                <div class="category-tab" data-category="repair">Repair Services</div>
+                <div class="category-tab" data-category="beauty">Beauty Services</div>
+                <div class="category-tab" data-category="craft">Handicrafts</div>
+                <div class="category-tab" data-category="popular">Popular</div>
+                <div class="category-tab" data-category="free">Free Courses</div>
+            </div>
+            
+            <h2 class="section-title">
+                <i class="fas fa-utensils"></i> Food & Cooking Skills
+            </h2>
+            
+            <div class="skills-grid" id="skills-grid">
+                <!-- Skill cards will be dynamically generated -->
+            </div>
+        </div>
+        
+        <!-- Skill Detail Page (initially hidden) -->
+        <div id="skill-detail-page" class="skill-detail-page">
+            <button class="back-btn" id="back-button">
+                <i class="fas fa-arrow-left"></i> Back to All Skills
+            </button>
+            
+            <div class="skill-header" id="skill-header">
+                <h1 id="skill-title">Skill Title</h1>
+                <p id="skill-description">Skill description will appear here</p>
+                <a href="#" class="btn">Enroll in Course</a>
+            </div>
+            
+            <div class="live-sessions">
+                <h3>Live Sessions <span class="badge" id="live-badge">LIVE</span></h3>
+                <div id="live-sessions-container">
+                    <!-- Live sessions will be dynamically inserted here -->
+                </div>
+                <div class="no-live-sessions" id="no-live-sessions" style="display: none;">
+                    No live sessions scheduled right now. Check back later!
+                </div>
+            </div>
+            
+            <div class="video-playlist">
+                <h3 class="section-title">
+                    <i class="fas fa-play-circle"></i> Video Tutorials
+                </h3>
+                
+                <div class="playlist-grid" id="video-playlist">
+                    <!-- YouTube videos will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>SkillBridge</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Learn</h3>
+                <ul>
+                    <li><a href="#">All Courses</a></li>
+                    <li><a href="#">Free Resources</a></li>
+                    <li><a href="#">Certification</a></li>
+                    <li><a href="#">Skill Assessment</a></li>
+                    <li><a href="#">Educator Program</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Earn</h3>
+                <ul>
+                    <li><a href="#">Job Board</a></li>
+                    <li><a href="#">Freelance Projects</a></li>
+                    <li><a href="#">Business Support</a></li>
+                    <li><a href="#">Micro Loans</a></li>
+                    <li><a href="#">Success Toolkit</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Technical Support</a></li>
+                    <li><a href="#">Report Issue</a></li>
+                    <li><a href="#">Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 SkillBridge. All rights reserved. | Empowering underprivileged communities through skill development
+        </div>
+    </footer>
+
+    <script>
+        // User data (in a real app, this would come from login)
+        const userData = {
+            name: "Priya K.",
+            profilePic: "https://randomuser.me/api/portraits/women/45.jpg",
+            skills: ["Tailoring", "Baking"]
+        };
+        
+        // Skill database with real YouTube videos
+        const skillsData = {
+            "Tailoring": {
+                description: "Master the art of tailoring and stitching to create beautiful garments or start your own business.",
+                category: "craft",
+                image: "https://images.unsplash.com/photo-1598703258405-a4f5c5d0c5c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                liveSessions: [
+                    {
+                        time: "11:00 AM - 12:30 PM",
+                        title: "Basic Stitching Techniques for Beginners",
+                        description: "Learn essential hand and machine stitching methods with expert guidance",
+                        educator: {
+                            name: "Mr. Sharma",
+                            experience: "15 years experience",
+                            image: "https://randomuser.me/api/portraits/men/32.jpg"
+                        }
+                    },
+                    {
+                        time: "3:00 PM - 4:30 PM",
+                        title: "Kurta Pattern Making Workshop",
+                        description: "Step-by-step guide to creating perfect kurta patterns",
+                        educator: {
+                            name: "Ms. Patel",
+                            experience: "Textile Designer",
+                            image: "https://randomuser.me/api/portraits/women/68.jpg"
+                        }
+                    }
+                ],
+                videos: [
+                    {
+                        title: "How to Thread a Sewing Machine",
+                        duration: "15 min",
+                        level: "Beginner",
+                        youtubeId: "MfI1gA8k5vE" // Real tailoring tutorial
+                    },
+                    {
+                        title: "5 Basic Hand Stitches Everyone Should Know",
+                        duration: "22 min",
+                        level: "Beginner",
+                        youtubeId: "bC3C-8h3K6w"
+                    },
+                    {
+                        title: "Measuring and Cutting Fabric Properly",
+                        duration: "18 min",
+                        level: "Intermediate",
+                        youtubeId: "J3FTRW9xdzA"
+                    },
+                    {
+                        title: "How to Sew a Simple Dress (Beginner Friendly)",
+                        duration: "32 min",
+                        level: "Beginner",
+                        youtubeId: "v8_U0drW6Fo"
+                    },
+                    {
+                        title: "Sewing Machine Maintenance Tips",
+                        duration: "12 min",
+                        level: "All Levels",
+                        youtubeId: "5FdQJ1Z3h3I"
+                    }
+                ]
+            },
+            "Baking": {
+                description: "Learn professional baking techniques to make delicious cakes, breads, and pastries for home or business.",
+                category: "food",
+                image: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                liveSessions: [],
+                videos: [
+                    {
+                        title: "Basic Cake Baking Tutorial",
+                        duration: "25 min",
+                        level: "Beginner",
+                        youtubeId: "Z1OLG7F3HD4" // Real baking tutorial
+                    },
+                    {
+                        title: "How to Make Perfect Cookies Every Time",
+                        duration: "18 min",
+                        level: "Beginner",
+                        youtubeId: "E9Rl1GvT2A8"
+                    },
+                    {
+                        title: "Bread Making at Home - Complete Guide",
+                        duration: "42 min",
+                        level: "Intermediate",
+                        youtubeId: "FT7M1bJO4Y8"
+                    },
+                    {
+                        title: "5 Easy Pastry Recipes for Beginners",
+                        duration: "35 min",
+                        level: "Beginner",
+                        youtubeId: "zA6LvHxXJk8"
+                    },
+                    {
+                        title: "Decorating Cakes Like a Pro",
+                        duration: "28 min",
+                        level: "Intermediate",
+                        youtubeId: "k1sHr53j3U4"
+                    }
+                ]
+            },
+            "Pickle & Papad Making": {
+                description: "Traditional techniques for making pickles and papads that can be sold locally or started as small business.",
+                category: "food",
+                image: "https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                liveSessions: [
+                    {
+                        time: "2:00 PM - 3:30 PM",
+                        title: "Traditional Mango Pickle Making",
+                        description: "Learn authentic Indian mango pickle recipe",
+                        educator: {
+                            name: "Mrs. Gupta",
+                            experience: "Home chef & entrepreneur",
+                            image: "https://randomuser.me/api/portraits/women/52.jpg"
+                        }
+                    }
+                ],
+                videos: [
+                    {
+                        title: "How to Make Mango Pickle at Home",
+                        duration: "15 min",
+                        level: "Beginner",
+                        youtubeId: "h1HXBmLeBX0" // Real pickle making tutorial
+                    },
+                    {
+                        title: "Papad Making Business Idea",
+                        duration: "12 min",
+                        level: "All Levels",
+                        youtubeId: "Qk3F5x4xXGQ"
+                    },
+                    {
+                        title: "5 Homemade Pickle Recipes",
+                        duration: "22 min",
+                        level: "Beginner",
+                        youtubeId: "j3mYFZv6H4M"
+                    },
+                    {
+                        title: "Commercial Pickle Making Process",
+                        duration: "18 min",
+                        level: "Advanced",
+                        youtubeId: "X8JvX9WxqD8"
+                    },
+                    {
+                        title: "Lemon Pickle Recipe",
+                        duration: "10 min",
+                        level: "Beginner",
+                        youtubeId: "5oJzCl5L0t8"
+                    }
+                ]
+            },
+            "Data Entry & Typing": {
+                description: "Basic computer literacy training for online data entry jobs and administrative work.",
+                category: "digital",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                liveSessions: [],
+                videos: [
+                    {
+                        title: "Data Entry Complete Course for Beginners",
+                        duration: "45 min",
+                        level: "Beginner",
+                        youtubeId: "v2jW1yvqiQc" // Real data entry tutorial
+                    },
+                    {
+                        title: "How to Improve Typing Speed",
+                        duration: "15 min",
+                        level: "Beginner",
+                        youtubeId: "1ArVtCQqQRE"
+                    },
+                    {
+                        title: "Excel for Data Entry Work",
+                        duration: "32 min",
+                        level: "Intermediate",
+                        youtubeId: "rwbho0CgEAE"
+                    },
+                    {
+                        title: "Online Data Entry Jobs Explained",
+                        duration: "18 min",
+                        level: "All Levels",
+                        youtubeId: "8Qutag7D8YI"
+                    },
+                    {
+                        title: "Data Entry Practice Exercises",
+                        duration: "25 min",
+                        level: "Beginner",
+                        youtubeId: "6MCjT-7e0Zo"
+                    }
+                ]
+            }
+        };
+        
+        // DOM Elements
+        const mainPage = document.getElementById('main-page');
+        const skillDetailPage = document.getElementById('skill-detail-page');
+        const skillsGrid = document.getElementById('skills-grid');
+        const backButton = document.getElementById('back-button');
+        const skillTitle = document.getElementById('skill-title');
+        const skillDescription = document.getElementById('skill-description');
+        const skillHeader = document.getElementById('skill-header');
+        const liveSessionsContainer = document.getElementById('live-sessions-container');
+        const noLiveSessions = document.getElementById('no-live-sessions');
+        const videoPlaylist = document.getElementById('video-playlist');
+        const welcomeUsername = document.getElementById('welcome-username');
+        const usernameDisplay = document.getElementById('username-display');
+        const categoryTabs = document.querySelectorAll('.category-tab');
+        const homeLink = document.getElementById('home-link');
+        const navLinks = {
+            home: document.getElementById('nav-home'),
+            courses: document.getElementById('nav-courses'),
+            jobs: document.getElementById('nav-jobs'),
+            community: document.getElementById('nav-community')
+        };
+        
+        // Initialize the page
+        function init() {
+            // Set user data
+            welcomeUsername.textContent = userData.name;
+            usernameDisplay.textContent = userData.name;
+            
+            // Generate skill cards
+            renderSkillCards();
+            
+            // Set up event listeners
+            setupEventListeners();
+        }
+        
+        // Render skill cards on main page
+        function renderSkillCards(filterCategory = 'all') {
+            skillsGrid.innerHTML = '';
+            
+            Object.entries(skillsData).forEach(([skillName, skillData]) => {
+                if (filterCategory === 'all' || skillData.category === filterCategory) {
+                    const card = document.createElement('div');
+                    card.className = 'skill-card';
+                    card.dataset.skill = skillName;
+                    
+                    card.innerHTML = `
+                        <img src="${skillData.image}" alt="${skillName}" class="skill-card-img">
+                        <div class="skill-card-content">
+                            <h3>${skillName}</h3>
+                            <p>${skillData.description}</p>
+                            <div class="meta">
+                                <span><i class="fas fa-user-graduate"></i> ${Math.floor(Math.random() * 2000) + 500} learners</span>
+                                <span><i class="fas fa-star"></i> 4.${Math.floor(Math.random() * 5) + 5} (${Math.floor(Math.random() * 500) + 100})</span>
+                            </div>
+                            <a href="#" class="btn">Explore</a>
+                        </div>
+                    `;
+                    
+                    skillsGrid.appendChild(card);
+                }
+            });
+        }
+        
+        // Show skill detail page
+        function showSkillDetail(skillName) {
+            const skillData = skillsData[skillName];
+            
+            if (!skillData) return;
+            
+            // Update skill details
+            skillTitle.textContent = skillName;
+            skillDescription.textContent = skillData.description;
+            skillHeader.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('${skillData.image}')`;
+            
+            // Update live sessions
+            liveSessionsContainer.innerHTML = '';
+            
+            if (skillData.liveSessions.length > 0) {
+                noLiveSessions.style.display = 'none';
+                
+                skillData.liveSessions.forEach(session => {
+                    const sessionCard = document.createElement('div');
+                    sessionCard.className = 'live-session-card';
+                    
+                    sessionCard.innerHTML = `
+                        <div class="session-time">
+                            <i class="fas fa-clock"></i> ${session.time}
+                        </div>
+                        <div class="session-details">
+                            <h4>${session.title}</h4>
+                            <p>${session.description}</p>
+                            <div class="session-educator">
+                                <img src="${session.educator.image}" alt="Educator">
+                                <span>${session.educator.name} (${session.educator.experience})</span>
+                            </div>
+                        </div>
+                        <button class="join-btn">Join Now</button>
+                    `;
+                    
+                    liveSessionsContainer.appendChild(sessionCard);
+                });
+            } else {
+                noLiveSessions.style.display = 'block';
+            }
+            
+            // Update video playlist
+            videoPlaylist.innerHTML = '';
+            
+            skillData.videos.forEach(video => {
+                const videoCard = document.createElement('div');
+                videoCard.className = 'video-card';
+                
+                videoCard.innerHTML = `
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/${video.youtubeId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>${video.title}</h4>
+                        <p>${video.duration} · ${video.level}</p>
+                    </div>
+                `;
+                
+                videoPlaylist.appendChild(videoCard);
+            });
+            
+            // Switch to detail page
+            mainPage.style.display = 'none';
+            skillDetailPage.style.display = 'block';
+        }
+        
+        // Set up event listeners
+        function setupEventListeners() {
+            // Skill card clicks
+            document.addEventListener('click', function(e) {
+                const skillCard = e.target.closest('.skill-card');
+                if (skillCard) {
+                    e.preventDefault();
+                    showSkillDetail(skillCard.dataset.skill);
+                }
+            });
+            
+            // Back button
+            backButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                mainPage.style.display = 'block';
+                skillDetailPage.style.display = 'none';
+            });
+            
+            // Category tabs
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    renderSkillCards(this.dataset.category);
+                });
+            });
+            
+            // Navigation links
+            homeLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                mainPage.style.display = 'block';
+                skillDetailPage.style.display = 'none';
+            });
+            
+            Object.values(navLinks).forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert(`This would navigate to ${link.textContent.trim()} section in a complete application`);
+                });
+            });
+            
+            // Search functionality
+            document.getElementById('search-btn').addEventListener('click', function() {
+                const searchTerm = document.getElementById('search-input').value.toLowerCase();
+                if (searchTerm) {
+                    // Filter skills based on search term
+                    const filteredSkills = Object.keys(skillsData).filter(skill => 
+                        skill.toLowerCase().includes(searchTerm) || 
+                        skillsData[skill].description.toLowerCase().includes(searchTerm)
+                    );
+                    
+                    if (filteredSkills.length > 0) {
+                        // Show first matching skill
+                        showSkillDetail(filteredSkills[0]);
+                    } else {
+                        alert('No skills found matching your search');
+                    }
+                }
+            });
+        }
+        
+        // Initialize the application
+        init();
+    </script>
+</body>
+</html>
