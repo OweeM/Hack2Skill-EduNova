@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillBridge - Learn Marketable Skills</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="\static\platform.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo" id="home-link">
+            <i class="fas fa-hands-helping"></i>
+            <span>SkillBridge</span>
+        </a>
+        
+        <nav>
+            <ul>
+                <li><a href="#" id="nav-home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#" id="nav-courses"><i class="fas fa-graduation-cap"></i> Courses</a></li>
+                <li><a href="#" id="nav-jobs"><i class="fas fa-briefcase"></i> Jobs</a></li>
+                <li><a href="#" id="nav-community"><i class="fas fa-users"></i> Community</a></li>
+            </ul>
+        </nav>
+        
+        <div class="user-profile" id="user-profile">
+            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="User">
+            <span id="username-display">Guest</span>
+            <i class="fas fa-chevron-down" style="margin-left: 0.5rem; font-size: 0.8rem;"></i>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Main Landing Page -->
+        <div id="main-page">
+            <div class="welcome-banner">
+                <h1>Welcome back, <span id="welcome-username">Guest</span>!</h1>
+                <p>Continue your learning journey or explore new skills to boost your career opportunities.</p>
+                <a href="#" class="btn" id="continue-learning-btn">Continue Learning</a>
+                <a href="#" class="btn btn-outline" id="explore-skills-btn">Explore New Skills</a>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Search for skills, courses, or jobs..." id="search-input">
+                <button type="submit" id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="category-tabs">
+                <div class="category-tab active" data-category="all">All Skills</div>
+                <div class="category-tab" data-category="food">Food & Cooking</div>
+                <div class="category-tab" data-category="digital">Digital Work</div>
+                <div class="category-tab" data-category="agri">Agriculture</div>
+                <div class="category-tab" data-category="repair">Repair Services</div>
+                <div class="category-tab" data-category="beauty">Beauty Services</div>
+                <div class="category-tab" data-category="craft">Handicrafts</div>
+                <div class="category-tab" data-category="popular">Popular</div>
+                <div class="category-tab" data-category="free">Free Courses</div>
+            </div>
+            
+            <h2 class="section-title">
+                <i class="fas fa-utensils"></i> Food & Cooking Skills
+            </h2>
+            
+            <div class="skills-grid" id="skills-grid">
+                <!-- Skill cards will be dynamically generated -->
+            </div>
+        </div>
+        
+        <!-- Skill Detail Page (initially hidden) -->
+        <div id="skill-detail-page" class="skill-detail-page">
+            <button class="back-btn" id="back-button">
+                <i class="fas fa-arrow-left"></i> Back to All Skills
+            </button>
+            
+            <div class="skill-header" id="skill-header">
+                <h1 id="skill-title">Skill Title</h1>
+                <p id="skill-description">Skill description will appear here</p>
+                <a href="#" class="btn">Enroll in Course</a>
+            </div>
+            
+            <div class="live-sessions">
+                <h3>Live Sessions <span class="badge" id="live-badge">LIVE</span></h3>
+                <div id="live-sessions-container">
+                    <!-- Live sessions will be dynamically inserted here -->
+                </div>
+                <div class="no-live-sessions" id="no-live-sessions" style="display: none;">
+                    No live sessions scheduled right now. Check back later!
+                </div>
+            </div>
+            
+            <div class="video-playlist">
+                <h3 class="section-title">
+                    <i class="fas fa-play-circle"></i> Video Tutorials
+                </h3>
+                
+                <div class="playlist-grid" id="video-playlist">
+                    <!-- YouTube videos will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>SkillBridge</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Learn</h3>
+                <ul>
+                    <li><a href="#">All Courses</a></li>
+                    <li><a href="#">Free Resources</a></li>
+                    <li><a href="#">Certification</a></li>
+                    <li><a href="#">Skill Assessment</a></li>
+                    <li><a href="#">Educator Program</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Earn</h3>
+                <ul>
+                    <li><a href="#">Job Board</a></li>
+                    <li><a href="#">Freelance Projects</a></li>
+                    <li><a href="#">Business Support</a></li>
+                    <li><a href="#">Micro Loans</a></li>
+                    <li><a href="#">Success Toolkit</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Technical Support</a></li>
+                    <li><a href="#">Report Issue</a></li>
+                    <li><a href="#">Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 SkillBridge. All rights reserved. | Empowering underprivileged communities through skill development
+        </div>
+    </footer>
+
+    <script src="\static\platform.js"></script>
+</body>
+</html>
