@@ -118,6 +118,14 @@
                         <label for="register-confirm-password">Confirm Password</label>
                         <input type="password" id="register-confirm-password" required>
                     </div>
+    <!-- ⭐ Add Skills Section -->
+ <div class="form-group" id="skills-section">
+    <label for="register-skills">Skills</label>
+    <div id="skills-container">
+        <input type="text" name="skills[]" placeholder="Enter a skill" />
+    </div>
+    <button type="button" onclick="addSkillField()" style="margin-top: 8px;">+ Add Skill</button>
+</div>
 
                     <button type="submit" class="btn" value="Register">Create Account</button>
 
