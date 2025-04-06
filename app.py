@@ -1,10 +1,11 @@
-from flask import Flask, request, jsonify, render_template, redirect, url_for
+from flask import Flask, request, jsonify, render_template, redirect, session
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
 uri = "mongodb+srv://OweeMirajkar:r.3y_rP_Ne6xAmX@cluster0.abxbzkz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
 app = Flask(__name__)
+app.secret_key = "super secret key"
 
 mongo = MongoClient(uri, server_api=ServerApi('1'))
 
@@ -14,7 +15,8 @@ def index():
 
 @app.route('/platform')
 def platform():
-    return render_template('platform.html')  # after login success
+    user = session['user']
+    return render_template('platform.html',user=user)  # after login success
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -22,6 +24,7 @@ def register():
     email = request.form.get('email')
     phone = request.form.get('phone')
     dob = request.form.get('dob')
+    skills = request.form.get('skills',[])
     gender = request.form.get('gender')
     password = request.form.get('password')
 
@@ -31,12 +34,18 @@ def register():
     mongo.SkillBridge.students.insert_one({
         'name': name,
         'email': email,
+        'skills': skills,
         'phone': phone,
         'dob': dob,
         'gender': gender,
         'password': password
     })
 
+    session['user']={
+        'email': email,
+        'name': name,
+        'skills' : skills
+    }
     return redirect('/platform')
 
 @app.route('/login', methods=['POST'])
@@ -49,6 +58,11 @@ def login():
     print('reached')
 
     if user:
+        session['user']={
+        'email': email,
+        'name': user['name'],
+        'skills': user.get('skills',[])
+        }
         return redirect('platform')
     else:
         return render_template('index.html', message="Invalid email or password")

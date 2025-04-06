@@ -1,16 +1,16 @@
 // User data (in a real app, this would come from login)
-const userData = {
-    name: "Priya K.",
-    profilePic: "https://randomuser.me/api/portraits/women/45.jpg",
-    skills: ["Tailoring", "Baking"]
-};
+// const userData = {
+//     name: "Priya K.",
+//     profilePic: "https://randomuser.me/api/portraits/women/45.jpg",
+//     skills: ["Tailoring", "Baking"]
+// };
 
 // Skill database with real YouTube videos
 const skillsData = {
     "Tailoring": {
         description: "Master the art of tailoring and stitching to create beautiful garments or start your own business.",
         category: "craft",
-        image: "https://images.unsplash.com/photo-1598703258405-a4f5c5d0c5c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+        image: "https://img.freepik.com/free-photo/tailoring-processs_1098-17986.jpg",
         liveSessions: [
             {
                 time: "11:00 AM - 12:30 PM",
@@ -33,76 +33,76 @@ const skillsData = {
                 }
             }
         ],
-        videos: [
-            {
-                title: "How to Thread a Sewing Machine",
-                duration: "15 min",
-                level: "Beginner",
-                youtubeId: "MfI1gA8k5vE" // Real tailoring tutorial
-            },
-            {
-                title: "5 Basic Hand Stitches Everyone Should Know",
-                duration: "22 min",
-                level: "Beginner",
-                youtubeId: "bC3C-8h3K6w"
-            },
-            {
-                title: "Measuring and Cutting Fabric Properly",
-                duration: "18 min",
-                level: "Intermediate",
-                youtubeId: "J3FTRW9xdzA"
-            },
-            {
-                title: "How to Sew a Simple Dress (Beginner Friendly)",
-                duration: "32 min",
-                level: "Beginner",
-                youtubeId: "v8_U0drW6Fo"
-            },
-            {
-                title: "Sewing Machine Maintenance Tips",
-                duration: "12 min",
-                level: "All Levels",
-                youtubeId: "5FdQJ1Z3h3I"
-            }
-        ]
+        // videos: [
+        //     {
+        //         title: "How to Thread a Sewing Machine",
+        //         duration: "15 min",
+        //         level: "Beginner",
+        //         youtubeId: "MfI1gA8k5vE" // Real tailoring tutorial
+        //     },
+        //     {
+        //         title: "5 Basic Hand Stitches Everyone Should Know",
+        //         duration: "22 min",
+        //         level: "Beginner",
+        //         youtubeId: "bC3C-8h3K6w"
+        //     },
+        //     {
+        //         title: "Measuring and Cutting Fabric Properly",
+        //         duration: "18 min",
+        //         level: "Intermediate",
+        //         youtubeId: "J3FTRW9xdzA"
+        //     },
+        //     {
+        //         title: "How to Sew a Simple Dress (Beginner Friendly)",
+        //         duration: "32 min",
+        //         level: "Beginner",
+        //         youtubeId: "v8_U0drW6Fo"
+        //     },
+        //     {
+        //         title: "Sewing Machine Maintenance Tips",
+        //         duration: "12 min",
+        //         level: "All Levels",
+        //         youtubeId: "5FdQJ1Z3h3I"
+        //     }
+        // ]
     },
     "Baking": {
         description: "Learn professional baking techniques to make delicious cakes, breads, and pastries for home or business.",
         category: "food",
         image: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
         liveSessions: [],
-        videos: [
-            {
-                title: "Basic Cake Baking Tutorial",
-                duration: "25 min",
-                level: "Beginner",
-                youtubeId: "Z1OLG7F3HD4" // Real baking tutorial
-            },
-            {
-                title: "How to Make Perfect Cookies Every Time",
-                duration: "18 min",
-                level: "Beginner",
-                youtubeId: "E9Rl1GvT2A8"
-            },
-            {
-                title: "Bread Making at Home - Complete Guide",
-                duration: "42 min",
-                level: "Intermediate",
-                youtubeId: "FT7M1bJO4Y8"
-            },
-            {
-                title: "5 Easy Pastry Recipes for Beginners",
-                duration: "35 min",
-                level: "Beginner",
-                youtubeId: "zA6LvHxXJk8"
-            },
-            {
-                title: "Decorating Cakes Like a Pro",
-                duration: "28 min",
-                level: "Intermediate",
-                youtubeId: "k1sHr53j3U4"
-            }
-        ]
+        // videos: [
+        //     {
+        //         title: "Basic Cake Baking Tutorial",
+        //         duration: "25 min",
+        //         level: "Beginner",
+        //         youtubeId: "Z1OLG7F3HD4" // Real baking tutorial
+        //     },
+        //     {
+        //         title: "How to Make Perfect Cookies Every Time",
+        //         duration: "18 min",
+        //         level: "Beginner",
+        //         youtubeId: "E9Rl1GvT2A8"
+        //     },
+        //     {
+        //         title: "Bread Making at Home - Complete Guide",
+        //         duration: "42 min",
+        //         level: "Intermediate",
+        //         youtubeId: "FT7M1bJO4Y8"
+        //     },
+        //     {
+        //         title: "5 Easy Pastry Recipes for Beginners",
+        //         duration: "35 min",
+        //         level: "Beginner",
+        //         youtubeId: "zA6LvHxXJk8"
+        //     },
+        //     {
+        //         title: "Decorating Cakes Like a Pro",
+        //         duration: "28 min",
+        //         level: "Intermediate",
+        //         youtubeId: "k1sHr53j3U4"
+        //     }
+        // ]
     },
     "Pickle & Papad Making": {
         description: "Traditional techniques for making pickles and papads that can be sold locally or started as small business.",
@@ -120,76 +120,76 @@ const skillsData = {
                 }
             }
         ],
-        videos: [
-            {
-                title: "How to Make Mango Pickle at Home",
-                duration: "15 min",
-                level: "Beginner",
-                youtubeId: "h1HXBmLeBX0" // Real pickle making tutorial
-            },
-            {
-                title: "Papad Making Business Idea",
-                duration: "12 min",
-                level: "All Levels",
-                youtubeId: "Qk3F5x4xXGQ"
-            },
-            {
-                title: "5 Homemade Pickle Recipes",
-                duration: "22 min",
-                level: "Beginner",
-                youtubeId: "j3mYFZv6H4M"
-            },
-            {
-                title: "Commercial Pickle Making Process",
-                duration: "18 min",
-                level: "Advanced",
-                youtubeId: "X8JvX9WxqD8"
-            },
-            {
-                title: "Lemon Pickle Recipe",
-                duration: "10 min",
-                level: "Beginner",
-                youtubeId: "5oJzCl5L0t8"
-            }
-        ]
+        // videos: [
+        //     {
+        //         title: "How to Make Mango Pickle at Home",
+        //         duration: "15 min",
+        //         level: "Beginner",
+        //         youtubeId: "h1HXBmLeBX0" // Real pickle making tutorial
+        //     },
+        //     {
+        //         title: "Papad Making Business Idea",
+        //         duration: "12 min",
+        //         level: "All Levels",
+        //         youtubeId: "Qk3F5x4xXGQ"
+        //     },
+        //     {
+        //         title: "5 Homemade Pickle Recipes",
+        //         duration: "22 min",
+        //         level: "Beginner",
+        //         youtubeId: "j3mYFZv6H4M"
+        //     },
+        //     {
+        //         title: "Commercial Pickle Making Process",
+        //         duration: "18 min",
+        //         level: "Advanced",
+        //         youtubeId: "X8JvX9WxqD8"
+        //     },
+        //     {
+        //         title: "Lemon Pickle Recipe",
+        //         duration: "10 min",
+        //         level: "Beginner",
+        //         youtubeId: "5oJzCl5L0t8"
+        //     }
+        // ]
     },
     "Data Entry & Typing": {
         description: "Basic computer literacy training for online data entry jobs and administrative work.",
         category: "digital",
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
         liveSessions: [],
-        videos: [
-            {
-                title: "Data Entry Complete Course for Beginners",
-                duration: "45 min",
-                level: "Beginner",
-                youtubeId: "v2jW1yvqiQc" // Real data entry tutorial
-            },
-            {
-                title: "How to Improve Typing Speed",
-                duration: "15 min",
-                level: "Beginner",
-                youtubeId: "1ArVtCQqQRE"
-            },
-            {
-                title: "Excel for Data Entry Work",
-                duration: "32 min",
-                level: "Intermediate",
-                youtubeId: "rwbho0CgEAE"
-            },
-            {
-                title: "Online Data Entry Jobs Explained",
-                duration: "18 min",
-                level: "All Levels",
-                youtubeId: "8Qutag7D8YI"
-            },
-            {
-                title: "Data Entry Practice Exercises",
-                duration: "25 min",
-                level: "Beginner",
-                youtubeId: "6MCjT-7e0Zo"
-            }
-        ]
+        // videos: [
+        //     {
+        //         title: "Data Entry Complete Course for Beginners",
+        //         duration: "45 min",
+        //         level: "Beginner",
+        //         youtubeId: "v2jW1yvqiQc" // Real data entry tutorial
+        //     },
+        //     {
+        //         title: "How to Improve Typing Speed",
+        //         duration: "15 min",
+        //         level: "Beginner",
+        //         youtubeId: "1ArVtCQqQRE"
+        //     },
+        //     {
+        //         title: "Excel for Data Entry Work",
+        //         duration: "32 min",
+        //         level: "Intermediate",
+        //         youtubeId: "rwbho0CgEAE"
+        //     },
+        //     {
+        //         title: "Online Data Entry Jobs Explained",
+        //         duration: "18 min",
+        //         level: "All Levels",
+        //         youtubeId: "8Qutag7D8YI"
+        //     },
+        //     {
+        //         title: "Data Entry Practice Exercises",
+        //         duration: "25 min",
+        //         level: "Beginner",
+        //         youtubeId: "6MCjT-7e0Zo"
+        //     }
+        // ]
     }
 };
 
@@ -218,8 +218,8 @@ const navLinks = {
 // Initialize the page
 function init() {
     // Set user data
-    welcomeUsername.textContent = userData.name;
-    usernameDisplay.textContent = userData.name;
+    // welcomeUsername.textContent = userData.name;
+    // usernameDisplay.textContent = userData.name;
 
     // Generate skill cards
     renderSkillCards();
