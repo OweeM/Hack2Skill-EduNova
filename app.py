@@ -1,60 +1,57 @@
-# from flask import Flask, request, jsonify, render_template
-# import requests
+from flask import Flask, request, jsonify, render_template, redirect, url_for
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
 
-# app = Flask(__name__)
+uri = "mongodb+srv://OweeMirajkar:r.3y_rP_Ne6xAmX@cluster0.abxbzkz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-# # Your YouTube API Key
-# # API_KEY_YT = "AIzaSyBBvAoqs0h5ZmtPSbUmzXEIG_GF1yzclLU"
-# YOUTUBE_API_KEY = "AIzaSyBBvAoqs0h5ZmtPSbUmzXEIG_GF1yzclLU"
-# YOUTUBE_SEARCH_URL = "https://www.googleapis.com/youtube/v3/search"
+app = Flask(__name__)
 
-# # def fetch_youtube_videos(query):
-# #     url = f"https://www.googleapis.com/youtube/v3/search?key={API_KEY_YT}&q={query}&part=snippet&type=video"
-# #     response = requests.get(url)
-# #     data = response.json()
-    
-# #     videos = []
-# #     for item in data.get("items", []):
-# #         video_info = {
-# #             "title": item["snippet"]["title"],
-# #             "video_url": f"https://www.youtube.com/watch?v={item['id']['videoId']}",
-# #             "thumbnail_url": item["snippet"]["thumbnails"]["high"]["url"]
-# #         }
-# #         videos.append(video_info)
-    
-# #     return videos
+mongo = MongoClient(uri, server_api=ServerApi('1'))
 
-# @app.route('/')
-# def index():
-#     return render_template('platform.html')
+@app.route('/')
+def index():
+    return render_template('index.html')  # renders login/register page
 
-# @app.route('/search', methods=['GET'])
-# def search_videos():
-#     query = request.args.get('query', '')
-#     if not query:
-#         return jsonify({"error": "Query parameter is missing"}), 400
+@app.route('/platform')
+def platform():
+    return render_template('platform.html')  # after login success
 
-#     params = {
-#         'part': 'snippet',
-#         'q': query,
-#         'key': YOUTUBE_API_KEY,
-#         'maxResults': 6,
-#         'type': 'video'
-#     }
+@app.route('/register', methods=['POST'])
+def register():
+    name = request.form.get('name')
+    email = request.form.get('email')
+    phone = request.form.get('phone')
+    dob = request.form.get('dob')
+    gender = request.form.get('gender')
+    password = request.form.get('password')
 
-#     response = requests.get(YOUTUBE_SEARCH_URL, params=params)
-#     data = response.json()
+    if mongo.SkillBridge.students.find_one({'email': email}):
+        return render_template('index.html', message="Email already registered")
 
-#     videos = []
-#     if 'items' in data:
-#         for item in data['items']:
-#             videos.append({
-#                 'title': item['snippet']['title'],
-#                 'videoId': item['id']['videoId'],
-#                 'thumbnail': item['snippet']['thumbnails']['medium']['url']
-#             })
+    mongo.SkillBridge.students.insert_one({
+        'name': name,
+        'email': email,
+        'phone': phone,
+        'dob': dob,
+        'gender': gender,
+        'password': password
+    })
 
-#     return jsonify(videos)
+    return redirect('/platform')
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+@app.route('/login', methods=['POST'])
+def login():
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user = mongo.SkillBridge.students.find_one({'email': email, 'password': password})
+
+    print('reached')
+
+    if user:
+        return redirect('platform')
+    else:
+        return render_template('index.html', message="Invalid email or password")
+
+if __name__ == '__main__':
+    app.run(debug=True)

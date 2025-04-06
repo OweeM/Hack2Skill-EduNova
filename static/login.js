@@ -32,39 +32,39 @@ switchToLogin.addEventListener('click', (e) => {
 });
 
 // Form submission
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
+// loginForm.addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     const email = document.getElementById('login-email').value;
+//     const password = document.getElementById('login-password').value;
     
-    // Here you would typically send this data to your backend
-    console.log('Login attempt with:', { email, password });
+//     // Here you would typically send this data to your backend
+//     console.log('Login attempt with:', { email, password });
     
-    // For demo purposes, we'll redirect after login
-    window.location.href = 'platform.html';
-});
+//     // For demo purposes, we'll redirect after login
+//     window.location.href = 'platform.html';
+// });
 
-registerForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('register-name').value;
-    const email = document.getElementById('register-email').value;
-    const phone = document.getElementById('register-phone').value;
-    const dob = document.getElementById('register-dob').value;
-    const gender = document.getElementById('register-gender').value;
-    const password = document.getElementById('register-password').value;
-    const confirmPassword = document.getElementById('register-confirm-password').value;
+// registerForm.addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     const name = document.getElementById('register-name').value;
+//     const email = document.getElementById('register-email').value;
+//     const phone = document.getElementById('register-phone').value;
+//     const dob = document.getElementById('register-dob').value;
+//     const gender = document.getElementById('register-gender').value;
+//     const password = document.getElementById('register-password').value;
+//     const confirmPassword = document.getElementById('register-confirm-password').value;
     
-    if (password !== confirmPassword) {
-        alert('Passwords do not match!');
-        return;
-    }
+//     if (password !== confirmPassword) {
+//         alert('Passwords do not match!');
+//         return;
+//     }
     
-    // Here you would typically send this data to your backend
-    console.log('Registration data:', { name, email, phone, dob, gender, password });
+//     // Here you would typically send this data to your backend
+//     console.log('Registration data:', { name, email, phone, dob, gender, password });
     
-    // For demo purposes, we'll redirect after registration
-    window.location.href = 'platform.html';
-});
+//     // For demo purposes, we'll redirect after registration
+//     window.location.href = 'platform.html';
+// });
 
 // Language selector functionality
 document.getElementById('language').addEventListener('change', function() {

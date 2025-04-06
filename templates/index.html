@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkillBridge - Connecting Educators with Learners</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="\static\login.css">
 </head>
+
 <body>
     <div class="container">
         <div class="language-selector">
@@ -17,7 +20,7 @@
                 <option value="mr">मराठी</option>
             </select>
         </div>
-        
+
         <div class="auth-container">
             <div class="auth-image">
                 <div>
@@ -25,36 +28,36 @@
                     <p>Connecting educators with underprivileged learners to build a skilled workforce</p>
                 </div>
             </div>
-            
+
             <div class="auth-content">
                 <div class="logo">
                     <i class="fas fa-hands-helping"></i>
                     <span>SkillBridge</span>
                 </div>
-                
+
                 <div class="tabs">
                     <div class="tab active" id="login-tab">Login</div>
                     <div class="tab" id="register-tab">Register</div>
                 </div>
-                
+
                 <!-- Login Form -->
-                <form id="login-form">
+                <form id="login-form" method="POST" action="/login">
                     <h1>Welcome back</h1>
-                    
+
                     <div class="form-group">
                         <label for="login-email">Email or Phone Number</label>
-                        <input type="text" id="login-email" required>
+                        <input type="text" id="login-email" name="email" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="login-password">Password</label>
-                        <input type="password" id="login-password" required>
+                        <input type="password" id="login-password" name="password" required>
                     </div>
-                    
+
                     <button type="submit" class="btn">Login</button>
-                    
+<!-- 
                     <div class="divider">or continue with</div>
-                    
+
                     <div class="social-login">
                         <button type="button" class="social-btn google">
                             <i class="fab fa-google"></i>
@@ -64,40 +67,40 @@
                             <i class="fab fa-facebook-f"></i>
                             Facebook
                         </button>
-                    </div>
-                    
+                    </div> -->
+
                     <p class="footer-text">
                         Don't have an account? <a href="#" id="switch-to-register">Register</a>
                     </p>
                 </form>
-                
+
                 <!-- Registration Form -->
-                <form id="register-form" style="display: none;">
+                <form id="register-form" style="display: none;" method="POST" action="/register">
                     <h1>Create an account</h1>
-                    
+
                     <div class="form-group">
                         <label for="register-name">Full Name</label>
-                        <input type="text" id="register-name" required>
+                        <input type="text" id="register-name" name="name"  required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="register-email">Email</label>
-                        <input type="email" id="register-email" required>
+                        <input type="email" id="register-email" name="email" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="register-phone">Phone Number</label>
-                        <input type="tel" id="register-phone" required>
+                        <input type="tel" id="register-phone" name="phone" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="register-dob">Date of Birth</label>
-                        <input type="date" id="register-dob" required>
+                        <input type="date" id="register-dob" name="dob" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="register-gender">Gender</label>
-                        <select id="register-gender" required>
+                        <select id="register-gender" name="gender" required>
                             <option value="">Select Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -105,27 +108,32 @@
                             <option value="prefer-not-to-say">Prefer not to say</option>
                         </select>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="register-password">Password</label>
-                        <input type="password" id="register-password" required>
+                        <input type="password" id="register-password" name="password" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="register-confirm-password">Confirm Password</label>
                         <input type="password" id="register-confirm-password" required>
                     </div>
-                    
-                    <button type="submit" class="btn">Create Account</button>
-                    
+
+                    <button type="submit" class="btn" value="Register">Create Account</button>
+
                     <p class="footer-text">
                         Already have an account? <a href="#" id="switch-to-login">Login</a>
                     </p>
                 </form>
+
+                {% if message %}
+                <p>{{ message }}</p>
+                {% endif %}
             </div>
         </div>
     </div>
 
     <script src="\static\login.js"></script>
 </body>
+
 </html>
