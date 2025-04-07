@@ -16,8 +16,14 @@ def index():
 
 @app.route('/platform')
 def platform():
-    user = session['user']
+    user = session.get('user',[])
+    if not user:
+        return redirect('/')
     return render_template('platform.html',user=user)  # after login success
+
+@app.route('/jobs')
+def jobs():
+    return render_template('jobs.html')
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -64,7 +70,7 @@ def login():
         'name': user['name'],
         'skills': user.get('skills',[])
         }
-        return redirect('platform')
+        return redirect('/platform')
     else:
         return render_template('index.html', message="Invalid email or password")
 
